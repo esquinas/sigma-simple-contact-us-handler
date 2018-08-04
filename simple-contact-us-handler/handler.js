@@ -1,6 +1,12 @@
 let AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient();
 const validate = require("validate.js");
+
+// Returns "YYYY-MM-DD".
+function intlDateString (date) {
+	return date.toJSON().substr(0, 10);
+}
+
 exports.handler = function (event, context, callback) {
 	//validating email and name
 	var constraints = {
@@ -19,7 +25,7 @@ exports.handler = function (event, context, callback) {
 	let invalid = validate(event, constraints);
 
 	if (!invalid) {
-		let today = new Date().toLocaleDateString();
+		let today = intlDateString(new Date());
 		ddb.put({
 			TableName: 'contact_us',
 			Item: {

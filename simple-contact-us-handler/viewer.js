@@ -1,7 +1,14 @@
 let AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient();
+
+// Get unix timestamp string and returns intl date "YYYY-MM-DD" string.
+function parseQueryDate (dateString) {
+    let date = new Date(parseInt(dateString));
+	return datee.toJSON().substr(0, 10);
+}
+
 exports.handler = function (event, context, callback) {
-	let searchDate = event.queryStringParameters.date;
+	var searchDate = parseDateString(event.queryStringParameters.date);
 	let response = {
 		body: "",
 		statusCode: 200,
