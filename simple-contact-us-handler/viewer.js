@@ -8,7 +8,7 @@ function parseQueryDate (dateString) {
 }
 
 exports.handler = function (event, context, callback) {
-	var searchDate = parseDateString(event.queryStringParameters.date);
+	var searchDate = parseQueryDate(event.queryStringParameters.date);
 	let response = {
 		body: "",
 		statusCode: 200,
