@@ -4,7 +4,7 @@ const ddb = new AWS.DynamoDB.DocumentClient();
 // Get unix timestamp string and returns intl date "YYYY-MM-DD" string.
 function parseQueryDate (dateString) {
     let date = new Date(parseInt(dateString));
-	return datee.toJSON().substr(0, 10);
+	return date.toJSON().substr(0, 10);
 }
 
 exports.handler = function (event, context, callback) {
